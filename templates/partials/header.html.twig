@@ -1,34 +1,118 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{ path('homepage') }}">SymBNB !</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarColor03">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="{{ path('homepage') }}">Accueil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="{{ path('ads_index') }}">Annonces</a>
-                </li>
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">Mon Compte!</a>
-                </li>
-            </ul>
+<!-- Loader -->
+<!-- <div id="preloader">
+    <div id="status">
+        <div class="spinner">
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
         </div>
     </div>
-</nav>
+</div> -->
+<!-- Loader -->
 
-{% for label, messages in app.flashes %}
+<!-- Navbar STart -->
+<header id="topnav" class="defaultscroll sticky bg-white">
     <div class="container">
-        <div class="alert alert-{{ label }}">
-            {% for message in messages %}
-                <p> {{ message|raw }} </p>
-            {% endfor %}
+        <!-- Logo container-->
+        <a class="logo" href="{{ path('homepage') }}">
+            <img src="/images/logo-dark.png" height="24" class="logo-light-mode" alt="">
+            <img src="/images/logo-light.png" height="24" class="logo-dark-mode" alt="">
+        </a>
+        
+        <!-- Logo End -->
+
+        <!-- End Logo container-->
+        <div class="menu-extras">
+            <div class="menu-item">
+                <!-- Mobile menu toggle-->
+                <a class="navbar-toggle" id="isToggle" onclick="toggleMenu()">
+                    <div class="lines">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </a>
+                <!-- End mobile menu toggle-->
+            </div>
         </div>
-    </div>
-{% endfor %}
+
+        <!--Login button Start-->
+        <ul class="buy-button list-inline mb-0">
+            <li class="list-inline-item mb-0">
+                <a href="javascript:void(0)" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                    <div class="btn btn-icon btn-soft-light"><i data-feather="mail" class="fea icon-sm"></i></div>
+                </a>
+            </li>
+
+            <!--
+            <li class="list-inline-item ps-1 mb-0">
+                <a href="#" target="_blank">
+                    <div class="btn btn-icon btn-soft-light"><i data-feather="log-in" class="fea icon-sm"></i></div>
+                </a>
+            </li>
+            -->
+
+            <li class="list-inline-item mb-0 ms-1">
+                <div class="dropdown dropdown-primary">
+                    <button type="button" class="btn btn-soft-light dropdown-toggle p-0" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/client/05.jpg" class="avatar avatar-ex-small rounded" alt=""></button>
+                    <span class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle">
+                        <span class="visually-hidden">New alerts</span>
+                    </span>
+                    <div class="dropdown-menu dd-menu dropdown-menu-end bg-white shadow border-0 mt-3 py-3" style="min-width: 200px;">
+                        <a class="dropdown-item d-flex align-items-center text-dark pb-3" href="#!">
+                            <img src="images/client/05.jpg" class="avatar avatar-md-sm rounded-circle border shadow" alt="">
+                            <div class="flex-1 ms-2">
+                                <span class="d-block">Cristina Julia</span>
+                                <small class="text-muted "><span style="font-size: 0.8rem">UI / UX Designer</span></small>
+                            </div>
+                        </a>
+                        <a class="dropdown-item text-dark text-uppercase fw-bold" href="#!">
+                            <span class="mb-0 d-inline-block me-1"><i data-feather="bell" class="fea icon-sm"></i></span>
+                            <span style="font-size: 0.7rem">Notifications</span>
+                            <span class="mb-0 badge bg-soft-success rounded-pill me-1">3</span>
+                        </a>
+                        <a class="dropdown-item text-dark text-uppercase fw-bold" href="#!">
+                            <span class="mb-0 d-inline-block me-1"><i data-feather="file-text" class="fea icon-sm"></i></span>
+                            <span style="font-size: 0.7rem">New Ads</span>
+                        </a>
+                        <a class="dropdown-item text-dark text-uppercase fw-bold" href="#">
+                            <span class="mb-0 d-inline-block me-1"><i data-feather="shopping-bag" class="fea icon-sm"></i></span>
+                            <span style="font-size: 0.7rem">Reservations</span>
+                            <span class="mb-0 badge bg-soft-info rounded-pill me-1">2</span>
+                        </a>
+                        <div class="dropdown-divider border-top"></div>
+                        <a class="dropdown-item text-dark text-uppercase fw-bold" href="#">
+                            <span class="mb-0 d-inline-block me-1"><i data-feather="clipboard" class="fea icon-sm"></i></span>
+                            <span style="font-size: 0.7rem">Dashboard</span>
+                        </a>
+                        <div class="dropdown-divider border-top"></div>
+                        <a class="dropdown-item text-dark text-uppercase fw-bold" href="#">
+                            <span class="mb-0 d-inline-block me-1"><i data-feather="log-out" class="fea icon-sm"></i></span>
+                            <span style="font-size: 0.7rem">Logout</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <!--Login button End-->
+
+        <div id="navigation">
+            <!-- Navigation Menu-->   
+            <ul class="navigation-menu nav-left">
+                <li><a href="{{ path('homepage') }}" class="sub-menu-item">Home</a></li>
+
+                <li><a href="{{ path('ads_index') }}" class="sub-menu-item">Ads</a></li>
+
+                <li class="has-submenu parent-menu-item">
+                    <a href="javascript:void(0)">Utility</a><span class="menu-arrow"></span>
+                    <ul class="submenu">
+                        <li><a href="#" class="sub-menu-item">Terms of services</a></li>
+                        <li><a href="#" class="sub-menu-item">Privacy policy</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="javascript:void(0)" target="_blank" class="sub-menu-item">Contact</a></li>
+            </ul><!--end navigation menu-->
+        </div><!--end navigation-->
+    </div><!--end container-->
+</header><!--end header-->
+<!-- Navbar End -->

@@ -5,19 +5,144 @@
 {% form_theme form 'ad/_collection.html.twig' %}
 
 {% block body %}
-
+<!-- Hero Start -->
+<section class="bg-half-170 d-table w-100" style="background: url('../images/1.jpg') center center;">
+    <div class="bg-overlay"></div>
     <div class="container">
-        <h1>Créer une nouvelle annonce</h1>
+        <div class="row mt-5 justify-content-center">
+            <div class="col-lg-12 text-center">
+                <div class="pages-heading">
+                    <h3 class="title text-white title-dark mb-0"> Ajout d'une nouvelle annonce</h3>
+                </div>
+            </div><!--end col-->
+        </div><!--end row-->
+        
+        <div class="position-breadcrumb">
+            <nav aria-label="breadcrumb" class="d-inline-block">
+                <ul class="breadcrumb bg-white rounded shadow mb-0 px-4 py-2">
+                    <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Accueil</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Ajout d'nnonces</li>
+                </ul>
+            </nav>
+        </div>
+    </div> <!--end container-->
+</section><!--end section-->
+<!-- Hero End -->
 
-        {{ form_start(form) }}
-
-        {{ form_widget(form) }}
-
-        <button type="submit" class="btn btn-primary">Créer la nouvelle annonce</button>
-
-        {{ form_end(form) }}
+<!-- Shape Start -->
+<div class="position-relative">
+    <div class="shape overflow-hidden text-white">
+        <svg viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 48H1437.5H2880V0H2160C1442.5 52 720 0 720 0H0V48Z" fill="currentColor"></path>
+        </svg>
     </div>
+</div>
+<!--Shape End-->
 
+<!-- Forms Start -->
+<section class="section bg-light">
+    <div class="container">
+        <!-- Dismissing Alert Start -->
+        {% for label, messages in app.flashes %}
+        <div class="row">
+            <div class="col pt-1">
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+                        <h6 class="mb-0">{{ message | raw }}</h6>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor%}
+            </div><!--end col-->
+        </div><!--end row-->
+        {% endfor%}
+        <!-- Dismissing Alert End -->
+        <div class="row">
+            <div class="col pt-2" id="forms">
+                <div class="component-wrapper rounded shadow">
+                    <div class="p-4 border-bottom">
+                        <h4 class="title mb-0">Veuillez renseigner les informations de la nouvelle annonce ! </h4>
+                    </div>
+                    <div class="p-4">
+                        {{ form_start(form) }}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        {{ form_label(form.title) }}
+                                        <div class="form-icon position-relative">
+                                            <i data-feather="edit" class="fea icon-sm icons"></i>
+                                            {{ form_widget(form.title) }}
+                                            {{ form_errors(form.title) }}
+                                        </div>
+                                    </div>
+                                </div><!--end col-->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        {{ form_label(form.slug) }}
+                                        <div class="form-icon position-relative">
+                                            <i data-feather="monitor" class="fea icon-sm icons"></i>
+                                            {{ form_widget(form.slug) }}
+                                            {{ form_errors(form.slug) }}
+                                        </div>
+                                    </div>
+                                </div><!--end col-->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        {{ form_label(form.introduction) }}
+                                        <div class="form-icon position-relative">
+                                            <i data-feather="message-circle" class="fea icon-sm icons"></i>
+                                            {{ form_widget(form.introduction) }}
+                                            {{ form_errors(form.introduction) }}
+                                        </div>
+                                    </div>
+                                </div><!--end col-->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        {{ form_label(form.coverImage) }}
+                                        <div class="form-icon position-relative">
+                                            <i data-feather="image" class="fea icon-sm icons"></i>
+                                            {{ form_widget(form.coverImage) }}
+                                            {{ form_errors(form.coverImage) }}
+                                        </div>
+                                    </div>
+                                </div><!--end col-->
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        {{ form_label(form.content) }}
+                                        <div class="form-icon position-relative">
+                                            <i data-feather="file-text" class="fea icon-sm icons"></i>
+                                            {{ form_widget(form.content) }}
+                                            {{ form_errors(form.content) }}
+                                        </div>
+                                    </div>
+                                </div><!--end col-->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        {{ form_label(form.rooms) }}
+                                        <div class="form-icon position-relative">
+                                            <i data-feather="home" class="fea icon-sm icons"></i>
+                                            {{ form_widget(form.rooms) }}
+                                            {{ form_errors(form.rooms) }}
+                                        </div>
+                                    </div>
+                                </div><!--end col-->
+                                <div class="col-md-6">{{ form_row(form.price) }}</div><!--end col-->
+                                <div class="col-md-12">{{ form_row(form.images) }}</div><!--end col-->
+                            </div><!--end row-->
+                            <div class="row ">
+                                <div class="col-md-12">
+                                    <div class="send d-grid">
+                                        <input type="submit" id="submit" name="send" class="btn btn-primary" value="Créer la nouvelle annonce">
+                                    </div>
+                                </div><!--end col-->
+                            </div><!--end row-->
+                        {{ form_end(form) }}<!--end form-->
+                    </div>
+                </div>
+            </div><!--end col-->
+        </div><!--end row-->
+    </div><!--end container-->
+</section><!--end section-->
+<!-- Forms End -->
 {% endblock %}
 
 {% block javascripts %}

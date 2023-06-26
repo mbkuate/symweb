@@ -45,7 +45,7 @@ class Ad
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\Length(min=10, minMessage="L'introduction doit faire plus de 20 caractères!")
+     * @Assert\Length(min=20, minMessage="L'introduction doit faire plus de 20 caractères!")
      */
     private $introduction;
 
